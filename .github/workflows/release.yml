@@ -15,17 +15,17 @@ jobs:
         with:
           dotnet-version: 8.0.x
       - name: Pack GrainAdaptors
-        run: dotnet pack --configuration Release ./src/OrgnalR.Backplane.GrainAdaptors
+        run: dotnet pack --configuration Release ./src/BarySignalR.Backplane.GrainAdaptors
       - name: Pack GainImplementations
-        run: dotnet pack --configuration Release ./src/OrgnalR.Backplane.GrainImplementations
+        run: dotnet pack --configuration Release ./src/BarySignalR.Backplane.GrainImplementations
       - name: Pack GrainInterfaces
-        run: dotnet pack --configuration Release ./src/OrgnalR.Backplane.GrainInterfaces
+        run: dotnet pack --configuration Release ./src/BarySignalR.Backplane.GrainInterfaces
       - name: Pack Core
-        run: dotnet pack --configuration Release ./src/OrgnalR.Core
+        run: dotnet pack --configuration Release ./src/BarySignalR.Core
       - name: Pack OrleansSilo
-        run: dotnet pack --configuration Release ./src/OrgnalR.OrleansSilo
+        run: dotnet pack --configuration Release ./src/BarySignalR.OrleansSilo
       - name: Pack SignalR
-        run: dotnet pack --configuration Release ./src/OrgnalR.SignalR
+        run: dotnet pack --configuration Release ./src/BarySignalR.SignalR
       - name: Push All
         run: find . \( -name "*.nupkg" \) | xargs -n1 dotnet nuget push -s nuget.org -k $PUSH_KEY --skip-duplicate
         env:

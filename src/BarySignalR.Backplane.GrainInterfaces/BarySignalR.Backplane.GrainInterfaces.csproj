@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>BarySignalR.GrainInterfaces</PackageId>
+        <Authors>Liam Morrow</Authors>
+        <Title>
+            BarySignalR Grain Interfaces package
+        </Title>
+        <Description>
+            A core package of BarySignalR. You likely want one of either `BarySignalR.SignalR`, or
+            `BarySignalR.OrleansSilo`
+        </Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\BarySignalR.Core\BarySignalR.Core.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.0.1" />
+    </ItemGroup>
+</Project>

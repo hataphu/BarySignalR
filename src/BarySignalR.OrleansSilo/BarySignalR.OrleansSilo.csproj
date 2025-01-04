@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>BarySignalR.OrleansSilo</PackageId>
+        <Authors>Liam Morrow</Authors>
+        <Title>
+            BarySignalR Orleans Silo
+        </Title>
+        <Description>
+            The Orleans silo library for BarySignalR. This is the package you'd want on the Orleans
+            Silo application.
+            For the SignalR server, use BarySignalR.SignalR
+        </Description>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference
+            Include="..\BarySignalR.Backplane.GrainImplementations\BarySignalR.Backplane.GrainImplementations.csproj" />
+        <ProjectReference
+            Include="..\BarySignalR.Backplane.GrainAdaptors\BarySignalR.Backplane.GrainAdaptors.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Orleans.Server" Version="9.0.1" />
+    </ItemGroup>
+</Project>

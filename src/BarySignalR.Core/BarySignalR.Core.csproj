@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>BarySignalR.Core</PackageId>
+        <Authors>Liam Morrow</Authors>
+        <Title>
+        BarySignalR Core package
+        </Title>
+        <Description>
+        A core package of BarySignalR.  You likely want one of either `BarySignalR.SignalR`, or `BarySignalR.OrleansSilo`
+        </Description>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="System.IO" Version="4.3.0" />
+        <PackageReference Include="System.Text.Encoding" Version="4.3.0" />
+        <PackageReference Include="Microsoft.Orleans.Sdk" Version="9.0.1" />
+    </ItemGroup>
+</Project>

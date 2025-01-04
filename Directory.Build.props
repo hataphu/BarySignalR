@@ -7,9 +7,9 @@
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <IncludeSource>true</IncludeSource>
-        <RepositoryUrl>https://github.com/LiamMorrow/OrgnalR</RepositoryUrl>
+        <RepositoryUrl>https://github.com/LiamMorrow/BarySignalR</RepositoryUrl>
         <PackageReleaseNotes>
-          Bugs:
+            Bugs:
             - Fix state not actually persisting
         </PackageReleaseNotes>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>

@@ -7,7 +7,7 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/test/OrgnalR.Tests/OrgnalR.Tests.csproj",
+        "${workspaceFolder}/test/BarySignalR.Tests/BarySignalR.Tests.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +19,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/test/OrgnalR.Tests/OrgnalR.Tests.csproj",
+        "${workspaceFolder}/test/BarySignalR.Tests/BarySignalR.Tests.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -32,7 +32,7 @@
       "args": [
         "watch",
         "run",
-        "${workspaceFolder}/test/OrgnalR.Tests/OrgnalR.Tests.csproj",
+        "${workspaceFolder}/test/BarySignalR.Tests/BarySignalR.Tests.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -44,7 +44,7 @@
       "type": "process",
       "args": [
         "test",
-        "${workspaceFolder}/test/OrgnalR.Tests/OrgnalR.Tests.csproj"
+        "${workspaceFolder}/test/BarySignalR.Tests/BarySignalR.Tests.csproj"
       ],
       "problemMatcher": "$msCompile",
       "group": {
@@ -61,7 +61,7 @@
         "/p:CollectCoverage=true",
         "/p:CoverletOutputFormat=lcov",
         "/p:CoverletOutput=./lcov.info",
-        "${workspaceFolder}/test/OrgnalR.Tests/OrgnalR.Tests.csproj"
+        "${workspaceFolder}/test/BarySignalR.Tests/BarySignalR.Tests.csproj"
       ],
       "problemMatcher": "$msCompile",
       "group": {

@@ -1,51 +1,51 @@
-# OrgnalR
+# BarySignalR
 
-[![Actions Status](https://github.com/LiamMorrow/OrgnalR/workflows/build/badge.svg)](https://github.com/LiamMorrow/OrgnalR/actions)
-[![Actions Status](https://github.com/LiamMorrow/OrgnalR/workflows/test/badge.svg)](https://github.com/LiamMorrow/OrgnalR/actions)  
-OrgnalR is a backplane for [SignalR core](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR), implemented through [Orleans](https://github.com/dotnet/orleans)!
+[![Actions Status](https://github.com/LiamMorrow/BarySignalR/workflows/build/badge.svg)](https://github.com/LiamMorrow/BarySignalR/actions)
+[![Actions Status](https://github.com/LiamMorrow/BarySignalR/workflows/test/badge.svg)](https://github.com/LiamMorrow/BarySignalR/actions)  
+BarySignalR is a backplane for [SignalR core](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR), implemented through [Orleans](https://github.com/dotnet/orleans)!
 It allows your SignalR servers to scale out with all the capacity of Orleans grains.
 
 This is an alternative to the Redis backplane, and [SignalR.Orleans](https://github.com/OrleansContrib/SignalR.Orleans). This implementation does not use Orleans streams at all. This project was born out of issues with deadlocks that occured with Orleans streams, and since [SignalR.Orleans](https://github.com/OrleansContrib/SignalR.Orleans) uses them, issues with signalr messages not going through.
 
 ## Getting started
 ### Compatibility
-Orleans `7.0.0` introduced a large breaking change around serialization and other Orleans primitives.  As of `^2.0.0`, OrgnalR only supports .net/Orleans `7.0.0` and up.  If you need to use this package for an older release of Orleans and .net (including .netstandard), see the `1.X.X` releases.
+Orleans `7.0.0` introduced a large breaking change around serialization and other Orleans primitives.  As of `^2.0.0`, BarySignalR only supports .net/Orleans `7.0.0` and up.  If you need to use this package for an older release of Orleans and .net (including .netstandard), see the `1.X.X` releases.
 
 ### Installing
 
-OrgnalR comes in two packages, one for the Orleans Silo, and one for the SignalR application.
+BarySignalR comes in two packages, one for the Orleans Silo, and one for the SignalR application.
 
 #### SignalR
 
-<a href="https://www.nuget.org/packages/OrgnalR.Signalr">![OrgnalR SignalR](https://img.shields.io/nuget/v/OrgnalR.SignalR?logo=SignalR)</a>
+<a href="https://www.nuget.org/packages/BarySignalR.Signalr">![BarySignalR SignalR](https://img.shields.io/nuget/v/BarySignalR.SignalR?logo=SignalR)</a>
 
 ```
-dotnet add package OrgnalR.SignalR
+dotnet add package BarySignalR.SignalR
 ```
 
 #### Orleans Silo
 
-<a href="https://www.nuget.org/packages/OrgnalR.OrleansSilo">![OrgnalR OrleansSilo](https://img.shields.io/nuget/v/OrgnalR.OrleansSilo?logo=OrleansSilo)</a>
+<a href="https://www.nuget.org/packages/BarySignalR.OrleansSilo">![BarySignalR OrleansSilo](https://img.shields.io/nuget/v/BarySignalR.OrleansSilo?logo=OrleansSilo)</a>
 
 ```
-dotnet add package OrgnalR.OrleansSilo
+dotnet add package BarySignalR.OrleansSilo
 ```
 
 ### Configuring
 
-OrgnalR can be configured via extension methods on both the Orleans client/silo builders, and the SignalR builder.
+BarySignalR can be configured via extension methods on both the Orleans client/silo builders, and the SignalR builder.
 
 #### SignalR
 
-Somewhere in your `Startup.cs` (or wherever you configure your SignalR server), you will need to add an extension method to the SignalR builder. The extension method lives in the `OrgnalR.SignalR` namespace, so be sure to add a using for that namespace.
+Somewhere in your `Startup.cs` (or wherever you configure your SignalR server), you will need to add an extension method to the SignalR builder. The extension method lives in the `BarySignalR.SignalR` namespace, so be sure to add a using for that namespace.
 
 ```c#
-using OrgnalR.SignalR;
+using BarySignalR.SignalR;
 class Startup {
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddSignalR()
-                .UseOrgnalR();
+                .UseBarySignalR();
     }
 }
 ```
@@ -71,11 +71,11 @@ Please see the [example directory](example) for a fully working solution.
 
 #### Orleans Silo
 
-Wherever you configure your orleans Silo, you will need to configure OrgnalR's grains. This is again accomplished by an extension method, however there are two different modes. For development, it is easiest to use the `AddOrgnalRWithMemoryGrainStorage` extension method, which registers the storage providers for the grains with memory storage. This is undesirable for production as if the silo dies, the information on connections in which groups is lost.
+Wherever you configure your orleans Silo, you will need to configure BarySignalR's grains. This is again accomplished by an extension method, however there are two different modes. For development, it is easiest to use the `AddBarySignalRWithMemoryGrainStorage` extension method, which registers the storage providers for the grains with memory storage. This is undesirable for production as if the silo dies, the information on connections in which groups is lost.
 
-For production usage it is best to configure actual persistent storage for `ORGNALR_USER_STORAGE`, `ORGNALR_GROUP_STORAGE`, and `MESSAGE_STORAGE_PROVIDER`, then use the `AddOrgnalR` extension method.
+For production usage it is best to configure actual persistent storage for `BarySignalR_USER_STORAGE`, `BarySignalR_GROUP_STORAGE`, and `MESSAGE_STORAGE_PROVIDER`, then use the `AddBarySignalR` extension method.
 
-Both of these methods are found in the `OrgnalR.Silo` namespace.
+Both of these methods are found in the `BarySignalR.Silo` namespace.
 
 ##### Development
 
@@ -84,7 +84,7 @@ var builder = new SiloHostBuilder()
 /* Your other configuration options */
 // Note here we use the memory storage option.
 // This is good for quick development, but we should register proper storage for production
-                .AddOrgnalRWithMemoryGrainStorage()
+                .AddBarySignalRWithMemoryGrainStorage()
 ```
 
 ##### Production
@@ -99,16 +99,16 @@ var builder = new SiloHostBuilder()
                     services.AddSingletonNamedService<IGrainStorage, YourStorageProvider>(Extensions.GROUP_STORAGE_PROVIDER);
                     services.AddSingletonNamedService<IGrainStorage, YourStorageProvider>(Extensions.MESSAGE_STORAGE_PROVIDER);
                 })
-                .AddOrgnalR()
+                .AddBarySignalR()
 ```
 
-And that's it! Your SignalR server will now use the OrgnalR backplane to send messages, and maintain groups / users.
+And that's it! Your SignalR server will now use the BarySignalR backplane to send messages, and maintain groups / users.
 
 ## Sending Messages to clients from grains
 
 Sometimes it is useful to send messages to clients from outside of the Hub. SignalR exposes an interface `IHubContext<T>` for this mechanism inside of the server apps which expose SignalR hubs.
 
-However, in the context of an orleans app, this requirement might still be necessary from the Silo host. To facilitate this, OrgnalR exposes a interface: [`IHubContextProvider`](/src/OrgnalR.Core/Provider/HubContextProvider.cs).
+However, in the context of an orleans app, this requirement might still be necessary from the Silo host. To facilitate this, BarySignalR exposes a interface: [`IHubContextProvider`](/src/BarySignalR.Core/Provider/HubContextProvider.cs).
 
 To send messages to connected clients in a hub, simply inject this interface into your grain (or service).
 It exposes methods for getting clients by group/user/connectionID. You can then call `SendAsync` to send them a message.
@@ -173,7 +173,7 @@ class MyGrain : IMyGrain{
 # Examples
 
 Examples can be found in the [example directory](example)
-The current example is a chat room which uses grains to store the messages, and OrgnalR as a SignalR backplane. React frontend.
+The current example is a chat room which uses grains to store the messages, and BarySignalR as a SignalR backplane. React frontend.
 
 # Contributing
 

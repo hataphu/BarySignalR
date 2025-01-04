@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/test/OrgnalR.Tests/bin/Debug/net7.0/OrgnalR.Tests.dll",
+            "program": "${workspaceFolder}/test/BarySignalR.Tests/bin/Debug/net7.0/BarySignalR.Tests.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/test/OrgnalR.Tests",
+            "cwd": "${workspaceFolder}/test/BarySignalR.Tests",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
