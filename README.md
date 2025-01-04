@@ -1,7 +1,5 @@
 # BarySignalR
 
-[![Actions Status](https://github.com/LiamMorrow/BarySignalR/workflows/build/badge.svg)](https://github.com/LiamMorrow/BarySignalR/actions)
-[![Actions Status](https://github.com/LiamMorrow/BarySignalR/workflows/test/badge.svg)](https://github.com/LiamMorrow/BarySignalR/actions)  
 BarySignalR is a backplane for [SignalR core](https://github.com/aspnet/AspNetCore/tree/master/src/SignalR), implemented through [Orleans](https://github.com/dotnet/orleans)!
 It allows your SignalR servers to scale out with all the capacity of Orleans grains.
 
@@ -9,8 +7,7 @@ This is an alternative to the Redis backplane, and [SignalR.Orleans](https://git
 
 ## Getting started
 ### Compatibility
-Orleans `7.0.0` introduced a large breaking change around serialization and other Orleans primitives.  As of `^2.0.0`, BarySignalR only supports .net/Orleans `7.0.0` and up.  If you need to use this package for an older release of Orleans and .net (including .netstandard), see the `1.X.X` releases.
-
+BarySignalR only supports .net/Orleans `9.0.0` and up
 ### Installing
 
 BarySignalR comes in two packages, one for the Orleans Silo, and one for the SignalR application.
